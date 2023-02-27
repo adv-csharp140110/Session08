@@ -49,5 +49,11 @@ namespace Session07
             var frm = new FormRegister();
             frm.ShowDialog();
         }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            var frm = new FormLogin();
+            frm.ShowDialog();
+        }
     }
 }
