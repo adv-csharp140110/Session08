@@ -13,6 +13,8 @@ namespace Session07.UI
 {
     public partial class FormProducts : Form
     {
+        int ItemPerPage = 10;
+
         public FormProducts()
         {
             InitializeComponent();
@@ -26,16 +28,58 @@ namespace Session07.UI
             //{
             //    dataGridView1.DataSource = ctx.Products.ToList();
             //}
-
             
-            dataGridView1.DataSource = repository.AsQueryable<Product>().ToList();
+            CreatePagination();
+            LoadData();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             repository.Create(new Product { ProductName = "Sample" });
             MessageBox.Show("Done");
-            dataGridView1.DataSource = repository.AsQueryable<Product>().ToList();
+            LoadData();
         }
+
+        private void LoadData(int page = 1)
+        {
+            //LINQ,
+            //.Take(10),
+            //.Skip(10).Take(10)
+
+            //💀💀💀 NA BAYAD BAD AZ .list() bashan
+            //dataGridView1.DataSource = repository.AsQueryable<Product>().ToList().Take(10);
+            
+
+            // 79 / 10 -> 7.9 
+
+            var skip = (page - 1 ) * ItemPerPage;
+            dataGridView1.DataSource = repository.AsQueryable<Product>().Skip(skip).Take(ItemPerPage).ToList();
+        }
+
+        private void CreatePagination()
+        {
+            var cnt = repository.AsQueryable<Product>().Count();
+
+            // 79 / 10 -> 7.9
+            int pageCnt = Convert.ToInt32(Math.Ceiling((double)cnt / ItemPerPage));
+
+            for (int i = 1; i <= pageCnt; i++)
+            {
+                Button btn = new Button();
+                btn.Text = i.ToString();
+                btn.Tag = i;
+                btn.Location = new Point(i * btn.Width, 10);
+                btn.Click += Btn_Click;
+                panel1.Controls.Add(btn);
+            }
+        }
+
+        private void Btn_Click(object? sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            LoadData((int)btn.Tag);
+        }
+
+ 
     }
 }
