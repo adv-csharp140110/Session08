@@ -35,6 +35,9 @@ namespace Session07.UI
                 return;
             }
             MessageBox.Show("Login success");
+            Hide();
+            var frm = new Form1();
+            frm.ShowDialog();
             Close();
         }
     }
