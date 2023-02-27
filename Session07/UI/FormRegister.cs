@@ -42,8 +42,9 @@ namespace Session07.UI
             //loing  123456 -> md5 -> 564654635sdfg;lksdhgjk
 
 
-            string hash = (textBoxPassword.Text).ToSHA512();
-            repo.Create(new User { Username = textBoxUsername.Text, Password = hash });
+            string salt = Guid.NewGuid().ToString();
+            string hash = (textBoxPassword.Text + salt).ToSHA512();
+            repo.Create(new User { Username = textBoxUsername.Text, Password = hash, Salt = salt });
             MessageBox.Show("Register done!");
         }
     }

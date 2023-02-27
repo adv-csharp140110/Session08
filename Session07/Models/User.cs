@@ -13,6 +13,7 @@ namespace Session07.Models
 
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Salt { get; set; }
         public Boolean IsActive { get; set; }
     }
 }
