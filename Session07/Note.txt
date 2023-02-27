@@ -1,3 +1,32 @@
 ﻿
 Reverse Engineering Database
-dotnet ef dbcontext scaffold "Data Source=.;Initial Catalog=NorthWind;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models
+	dotnet ef dbcontext scaffold "Data Source=.;Initial Catalog=NorthWind;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models
+
+
+
+
+Security
+	
+	Authenticate
+		اهراز هویت
+		کاربر کی هست
+
+		Form login
+		LDAP
+		CAS
+		OAUTH
+
+	Authorize
+		دسترسی
+		Group
+		RBACK - Role Based Access Control
+
+
+
+	Form login
+		unique id:
+			username/email
+			phone -> otp (one time password)
+			code meli
+		password
+			hash
