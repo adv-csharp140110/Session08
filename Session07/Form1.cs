@@ -43,5 +43,11 @@ namespace Session07
             
             return result ;
         }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            var frm = new FormRegister();
+            frm.ShowDialog();
+        }
     }
 }

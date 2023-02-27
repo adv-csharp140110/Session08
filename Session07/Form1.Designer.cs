@@ -30,6 +30,7 @@
         {
             this.buttonProductList = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonProductList
@@ -52,11 +53,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonRegister
+            // 
+            this.buttonRegister.Location = new System.Drawing.Point(524, 12);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(139, 37);
+            this.buttonRegister.TabIndex = 2;
+            this.buttonRegister.Text = "Register";
+            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 528);
+            this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonProductList);
             this.Name = "Form1";
@@ -69,5 +81,6 @@
 
         private Button buttonProductList;
         private Button button1;
+        private Button buttonRegister;
     }
 }
