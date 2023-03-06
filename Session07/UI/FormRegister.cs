@@ -44,7 +44,7 @@ namespace Session07.UI
 
             string salt = Guid.NewGuid().ToString();
             string hash = (textBoxPassword.Text + salt).ToSHA512();
-            repo.Create(new User { Username = textBoxUsername.Text, Password = hash, Salt = salt });
+            repo.Create(new User { Username = textBoxUsername.Text, Password = hash, Salt = salt, RoleId = 3 });
             MessageBox.Show("Register done!");
         }
     }

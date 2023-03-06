@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Session07.Models;
 
@@ -11,9 +12,11 @@ using Session07.Models;
 namespace Session07.Migrations
 {
     [DbContext(typeof(NorthWindContext))]
-    partial class NorthWindContextModelSnapshot : ModelSnapshot
+    [Migration("20230306155605_user role")]
+    partial class userrole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
