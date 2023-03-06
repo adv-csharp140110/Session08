@@ -63,6 +63,7 @@
             this.checkedListBoxButtons.Name = "checkedListBoxButtons";
             this.checkedListBoxButtons.Size = new System.Drawing.Size(257, 364);
             this.checkedListBoxButtons.TabIndex = 3;
+            this.checkedListBoxButtons.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxButtons_ItemCheck);
             this.checkedListBoxButtons.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxButtons_SelectedIndexChanged);
             // 
             // label2

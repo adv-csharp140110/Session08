@@ -72,6 +72,12 @@ public partial class NorthWindContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<Role> Roles { get; set; }
+    public virtual DbSet<Permission> Permissions { get; set; }
+    public virtual DbSet<PermissionRole> PermissionRoles { get; set; }
+
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=NorthWind;Integrated Security=True;TrustServerCertificate=True");
@@ -610,6 +616,18 @@ public partial class NorthWindContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Territories_Region");
         });
+
+
+        modelBuilder.Entity<PermissionRole>().HasKey(e => new { e.RoleId, e.PermissionId});
+        modelBuilder.Entity<PermissionRole>()
+            .HasOne(e => e.Role)
+            .WithMany(p => p.PermissionRoles)
+            .HasForeignKey(e => e.RoleId);
+        modelBuilder.Entity<PermissionRole>()
+            .HasOne(e => e.Permission)
+            .WithMany(p => p.PermissionRoles)
+            .HasForeignKey(e => e.PermissionId);
+
 
         OnModelCreatingPartial(modelBuilder);
     }

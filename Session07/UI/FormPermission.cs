@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Session07.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,9 @@ namespace Session07.UI
 {
     public partial class FormPermission : Form
     {
+        Repository repository = new Repository();
+        List<String> checkedButtons= new List<String>();
+
         public FormPermission()
         {
             InitializeComponent();
@@ -20,6 +24,10 @@ namespace Session07.UI
 
         private void FormPermission_Load(object sender, EventArgs e)
         {
+            comboBoxRoles.DisplayMember = "Name";
+            comboBoxRoles.ValueMember = "Id";
+            comboBoxRoles.DataSource = repository.AsQueryable<Role>().ToList();
+
             //Reflection
             var assembly = Assembly.GetExecutingAssembly();
             //linq
@@ -28,6 +36,8 @@ namespace Session07.UI
             {
                 listBoxForms.Items.Add(form.FullName);
             }
+
+
 
         }
 
@@ -47,8 +57,9 @@ namespace Session07.UI
             {
                 if(ctrl is Button)
                 {
-                        var button = (Button)ctrl;
-                        checkedListBoxButtons.Items.Add($"{fromName}|{button.Name}");
+                    var button = (Button)ctrl;
+                    string key = $"{fromName}|{button.Name}";
+                    checkedListBoxButtons.Items.Add(key, checkedButtons.Contains(key));
                 }
             }
             frm.Dispose();
@@ -61,6 +72,18 @@ namespace Session07.UI
 
         }
 
-      
+        private void checkedListBoxButtons_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            string key = checkedListBoxButtons.SelectedItem as string;
+            if(e.NewValue == CheckState.Checked && !checkedButtons.Contains(key))
+            {
+                checkedButtons.Add(key);
+            }
+
+            if (e.NewValue == CheckState.Unchecked && checkedButtons.Contains(key))
+            {
+                checkedButtons.Remove(key);
+            }
+        }
     }
 }
