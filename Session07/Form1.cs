@@ -1,3 +1,5 @@
+using Dapper;
+using Microsoft.Data.SqlClient;
 using Session07.Models;
 using Session07.UI;
 using Session07.utils;
@@ -81,10 +83,25 @@ namespace Session07
                     //
                 }
             }
+
+            var connection = new SqlConnection(connectionString);
+            var roles  = connection.Query<Role>("SELECT * FROM [NorthWind].[dbo].[Roles]");
+            dataGridView1.DataSource = roles;
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+        }
+
+        string connectionString = "Data Source=.;Initial Catalog=NorthWind;Integrated Security=True;TrustServerCertificate=True";
+        private void buttonDapperAddRole_Click(object sender, EventArgs e)
+        {
+            // ADO.net -> sqlConnection, sqlCommand, 
+            //Dapper
+            var connection = new SqlConnection(connectionString);
+            connection.Execute("INSERT INTO [NorthWind].[dbo].[Roles] ([Name]) VALUES (@NAME)", new Role { Name ="Role Jadid"});
+            MessageBox.Show("Done");
 
         }
     }

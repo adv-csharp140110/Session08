@@ -38,7 +38,10 @@
             this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelRole = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonDapperAddRole = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonProductList
@@ -98,9 +101,9 @@
             this.toolStripStatusLabelUser,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabelRole});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 506);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 550);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(958, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1030, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -129,11 +132,32 @@
             this.toolStripStatusLabelRole.Size = new System.Drawing.Size(27, 17);
             this.toolStripStatusLabelRole.Text = "role";
             // 
+            // buttonDapperAddRole
+            // 
+            this.buttonDapperAddRole.Location = new System.Drawing.Point(12, 229);
+            this.buttonDapperAddRole.Name = "buttonDapperAddRole";
+            this.buttonDapperAddRole.Size = new System.Drawing.Size(261, 38);
+            this.buttonDapperAddRole.TabIndex = 6;
+            this.buttonDapperAddRole.Text = "Dapper - add role";
+            this.buttonDapperAddRole.UseVisualStyleBackColor = true;
+            this.buttonDapperAddRole.Click += new System.EventHandler(this.buttonDapperAddRole_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 283);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(539, 204);
+            this.dataGridView1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 528);
+            this.ClientSize = new System.Drawing.Size(1030, 572);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonDapperAddRole);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonPermissions);
             this.Controls.Add(this.buttonLogin);
@@ -145,6 +169,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +187,7 @@
         private ToolStripStatusLabel toolStripStatusLabelUser;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel toolStripStatusLabelRole;
+        private Button buttonDapperAddRole;
+        private DataGridView dataGridView1;
     }
 }
