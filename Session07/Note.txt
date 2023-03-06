@@ -24,6 +24,7 @@ Security
 				-> buttons in form
 
 
+		https://github.com/casbin/Casbin.NET
 
 	Form login
 		unique id:
@@ -32,3 +33,15 @@ Security
 			code meli
 		password
 			hash
+
+
+DB
+	ADO.net 
+		-> level zero
+	ORM
+		EF Database first
+		EF Code first
+
+	
+	Micro ORM
+		Dapper

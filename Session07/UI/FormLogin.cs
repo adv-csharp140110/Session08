@@ -1,4 +1,5 @@
-﻿using Session07.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Session07.Models;
 using Session07.utils;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,10 @@ namespace Session07.UI
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             var repo = new Repository();
-            var user = repo.AsQueryable<User>().FirstOrDefault(x => x.Username == textBoxUsername.Text);
+            var user = repo.AsQueryable<User>()
+                .Include(x => x.Role)
+                .Include(x => x.Role.PermissionRoles)
+                .FirstOrDefault(x => x.Username == textBoxUsername.Text);
             if (user == null)
             {
                 MessageBox.Show("نام کاربری یا گزرواژه اشتباه است");
@@ -34,7 +38,8 @@ namespace Session07.UI
                 MessageBox.Show("نام کاربری یا گزرواژه اشتباه است");
                 return;
             }
-            MessageBox.Show("Login success");
+            AppData.User = user;
+            AppData.Permissions = repo.AsQueryable<Permission>().ToList();
             Hide();
             var frm = new Form1();
             frm.ShowDialog();

@@ -1,5 +1,6 @@
 using Session07.Models;
 using Session07.UI;
+using Session07.utils;
 using System.Reflection;
 
 namespace Session07
@@ -60,6 +61,31 @@ namespace Session07
         {
             var frm = new FormPermission();
             frm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            toolStripStatusLabelUser.Text = AppData.User.Username;
+            toolStripStatusLabelRole.Text = AppData.User.Role.Name;
+            foreach (var control in Controls)
+            {
+                if(control is Button)
+                {
+                    var btn = control as Button;
+                    btn.Enabled = false;
+                    var btnPermision = AppData.Permissions.FirstOrDefault(x => x.ButtonName == btn.Name && x.FormName == this.GetType().FullName);
+                    if(btnPermision != null && AppData.User.Role.PermissionRoles.Any(x => x.PermissionId == btnPermision.Id))
+                    {
+                        btn.Enabled = true;
+                    }
+                    //
+                }
+            }
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

@@ -33,6 +33,12 @@
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonPermissions = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelRole = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonProductList
@@ -85,11 +91,50 @@
             this.buttonPermissions.UseVisualStyleBackColor = true;
             this.buttonPermissions.Click += new System.EventHandler(this.buttonPermissions_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabelUser,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabelRole});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 506);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(958, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(33, 17);
+            this.toolStripStatusLabel1.Text = "User:";
+            // 
+            // toolStripStatusLabelUser
+            // 
+            this.toolStripStatusLabelUser.Name = "toolStripStatusLabelUser";
+            this.toolStripStatusLabelUser.Size = new System.Drawing.Size(29, 17);
+            this.toolStripStatusLabelUser.Text = "user";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(30, 17);
+            this.toolStripStatusLabel2.Text = "Role";
+            // 
+            // toolStripStatusLabelRole
+            // 
+            this.toolStripStatusLabelRole.Name = "toolStripStatusLabelRole";
+            this.toolStripStatusLabelRole.Size = new System.Drawing.Size(27, 17);
+            this.toolStripStatusLabelRole.Text = "role";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 528);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonPermissions);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.buttonRegister);
@@ -97,7 +142,11 @@
             this.Controls.Add(this.buttonProductList);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,5 +157,10 @@
         private Button buttonRegister;
         private Button buttonLogin;
         private Button buttonPermissions;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel toolStripStatusLabelUser;
+        private ToolStripStatusLabel toolStripStatusLabel2;
+        private ToolStripStatusLabel toolStripStatusLabelRole;
     }
 }
